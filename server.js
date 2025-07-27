@@ -269,6 +269,7 @@ app.delete('/api/ambassadors/:id', checkAuth, (req, res) => {
     res.sendStatus(writeJsonFile(ambassadorsFilePath, updatedAmbassadors) ? 204 : 500);
 });
 
+module.exports = app;
 // --- Start Server ---
 app.listen(PORT, () => {
     console.log(`Backend server running at ${base_url}`);
