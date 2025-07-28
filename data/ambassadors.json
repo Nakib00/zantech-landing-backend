@@ -26,12 +26,5 @@
     "campus": "BRAC University",
     "image": "https://images.pexels.com/photos/3775164/pexels-photo-3775164.jpeg?auto=compress&cs=tinysrgb&w=300",
     "bio": "AI enthusiast and community builder, passionate about making technology accessible to everyone."
-  },
-  {
-    "id": 5,
-    "name": "Imran Chowdhury",
-    "campus": "IUT",
-    "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=300",
-    "bio": "Robotics hardware specialist focusing on drone technology and embedded systems."
   }
 ]
