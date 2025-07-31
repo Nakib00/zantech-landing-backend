@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +8,7 @@ const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 8000;
-const base_url = `http://localhost:${PORT}`;
+const base_url = process.env.BASE_URL || `http://localhost:${PORT}`;
 
 // --- Middleware ---
 app.use(cors());
@@ -90,15 +91,17 @@ const deleteImageFile = (imageUrl, folderName) => {
 
 // --- Auth Routes & Dashboard ---
 app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'public', 'login.html')));
+
 app.post('/login', (req, res) => {
-    const credentials = readJsonFile(path.join(__dirname, 'credentials.json'));
-    if (credentials && req.body.email === credentials.email && req.body.password === credentials.password) {
+    const { email, password } = req.body;
+    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
         req.session.isLoggedIn = true;
         res.redirect('/dashboard');
     } else {
         res.redirect('/login?error=1');
     }
 });
+
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
         res.clearCookie('connect.sid');
